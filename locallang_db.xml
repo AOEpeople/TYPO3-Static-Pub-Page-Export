@@ -9,6 +9,7 @@
 			<label index="moduleFunction.tx_staticpub_pageexport_controller_pageExport">Page-Export</label>
 			<label index="moduleFunction.tx_staticpub_pageexport_controller_pageExport.startExport">Start Export</label>
 			<label index="moduleFunction.tx_staticpub_pageexport_controller_pageExport.errorFileRepositoryHasNoFiles">staticpub did not create any files (please check your configuration of staticpub)</label>
+			<label index="moduleFunction.tx_staticpub_pageexport_controller_pageExport.errorIsUnknown">unknown error occured</label>
 		</languageKey>
 	</data>
 </T3locallang>

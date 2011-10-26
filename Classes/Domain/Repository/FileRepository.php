@@ -18,6 +18,8 @@ class Tx_StaticpubPageexport_Domain_Repository_FileRepository {
 	 */
 	private $files = array();
 	/**
+	 * define the pageId, to which the files belong
+	 * 
 	 * @var integer
 	 */
 	private $pageId;

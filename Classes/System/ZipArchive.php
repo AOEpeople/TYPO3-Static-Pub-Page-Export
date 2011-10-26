@@ -9,6 +9,8 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+require_once(PATH_tx_staticpub_pageexport . 'Classes/System/ZipArchiveException.php');
+
 /**
  * This class creates a zip-archive on base of the file-repository
  * 
@@ -27,8 +29,8 @@ class Tx_StaticpubPageexport_System_ZipArchive {
 		$this->addFilesToZipFile($zipArchive, $fileRepository);
 		$this->closeZipFile($zipArchive);
 
-		$content = file_get_contents( $zipFile );
-		unlink($zipFile);
+		$content = $this->getFileContent( $zipFile );
+		$this->deleteFile($zipFile);
 
 		return $content;
 	}
@@ -38,6 +40,33 @@ class Tx_StaticpubPageexport_System_ZipArchive {
 	 */
 	protected function createZipArchive() {
 		return new ZipArchive();
+	}
+	/**
+	 * @param string $filename
+	 */
+	protected function deleteFile($filename) {
+		unlink($filename);
+	}
+	/**
+	 * @param string $filename
+	 * @return string
+	 */
+	protected function getFileContent($filename) {
+		return file_get_contents( $filename );
+	}
+	/**
+	 * @param string $filename
+	 * @return boolean
+	 */
+	protected function isReadable($filename) {
+		return is_readable($filename);
+	}
+	/**
+	 * @param string $message
+	 * @throw Tx_StaticpubPageexport_System_ZipArchiveException
+	 */
+	protected function throwException($message) {
+		throw new Tx_StaticpubPageexport_System_ZipArchiveException($message);
 	}
 
 	/**
@@ -49,9 +78,9 @@ class Tx_StaticpubPageexport_System_ZipArchive {
 		foreach($fileRepository->getFiles() as $file) {
 			$filename = $file->getOriginalPath() . $file->getName();
 			$localName = $file->getRelativePath() . $file->getName();
-			if(is_readable($filename)) {
+			if($this->isReadable($filename)) {
 				if($zipArchive->addFile($filename, $localName) === FALSE) {
-					throw new LogicException('can not add file "'.$localName.'" to archive');
+					$this->throwException( 'can not add file "'.$localName.'" to archive' );
 				}
 			}
 		}
@@ -61,7 +90,7 @@ class Tx_StaticpubPageexport_System_ZipArchive {
 	 */
 	private function closeZipFile(ZipArchive $zipArchive) {
 		if($zipArchive->close() === FALSE) {
-			throw new LogicException('can not close archive');
+			$this->throwException( 'can not close archive' );
 		}
 	}
 	/**
@@ -70,7 +99,7 @@ class Tx_StaticpubPageexport_System_ZipArchive {
 	 */
 	private function createZipFile(ZipArchive $zipArchive, $zipFile) {
 		if($zipArchive->open( $zipFile, ZIPARCHIVE::CREATE ) === FALSE) {
-			throw new LogicException('can not create new archive "'.$zipFile.'"');
+			$this->throwException( 'can not create new archive "'.$zipFile.'"' );
 		}
 	}
 }

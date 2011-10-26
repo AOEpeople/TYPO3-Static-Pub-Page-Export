@@ -1,0 +1,11 @@
+<phpunit colors="true" backupGlobals="false"
+	backupStaticAttributes="false" syntaxCheck="false" stopOnFailure="false"
+	convertErrorsToExceptions="true" convertNoticesToExceptions="true"
+	convertWarningsToExceptions="true">
+	<!-- Add testclasses -->
+	<testsuites>
+		<testsuite name="staticpub_pageexport">
+			<directory suffix="Test.php">./</directory>
+		</testsuite>
+	</testsuites>
+</phpunit>

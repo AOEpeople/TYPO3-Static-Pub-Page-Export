@@ -29,10 +29,6 @@ class Tx_StaticpubPageexport_System_PageExport {
 	 * @var integer
 	 */
 	private $pageId;
-	/**
-	 * @var tx_staticpub
-	 */
-	private $staticpubObj;
 
 	/**
 	 * crawl page and put HTML-file (and resources like images) of crawled page into file-repository
@@ -104,6 +100,12 @@ class Tx_StaticpubPageexport_System_PageExport {
 		return $this->fileRepository;
 	}
 	/**
+	 * @return string
+	 */
+	protected function getPathSite() {
+		return PATH_site;
+	}
+	/**
 	 * @param array $data
 	 * @return string
 	 */
@@ -112,7 +114,7 @@ class Tx_StaticpubPageexport_System_PageExport {
 		$publishDir = $this->getArrayElement($data, 'log|tx_staticpub_publishdir');
 		$path = $this->getArrayElement($data, 'log|tx_staticpub_path');
 		if($publishDir !== NULL && $path !== NULL) {
-			$publishDirForPage = PATH_site . $publishDir . $path;
+			$publishDirForPage = $this->getPathSite() . $publishDir . $path;
 		}
 		return $publishDirForPage;
 	}
@@ -123,9 +125,9 @@ class Tx_StaticpubPageexport_System_PageExport {
 	protected function getPublishDirForResources(array $data) {
 		$publishDirForResources = '';
 		if(NULL !== $publishDirForResources = $this->getArrayElement($data, 'parameters|procInstrParams|tx_staticpub_publish.|publishDirForResources')) {
-			$publishDirForResources = PATH_site . $publishDirForResources;
+			$publishDirForResources = $this->getPathSite() . $publishDirForResources;
 		} elseif(NULL !== $publishDir = $this->getArrayElement($data, 'log|tx_staticpub_publishdir')) {
-			$publishDirForResources = PATH_site . $publishDir;
+			$publishDirForResources = $this->getPathSite() . $publishDir;
 		}
 		return $publishDirForResources;
 	}
@@ -134,16 +136,6 @@ class Tx_StaticpubPageexport_System_PageExport {
 	 */
 	protected function getPageId() {
 		return $this->pageId;
-	}
-	/**
-	 * @return tx_staticpub
-	 */
-	protected function getStaticpubObj() {
-		if(!isset($this->staticpubObj)) {
-			require_once( t3lib_extMgm::extPath('staticpub') . 'class.tx_staticpub.php');
-			$this->staticpubObj = t3lib_div::makeInstance('tx_staticpub');
-		}
-		return $this->staticpubObj;
 	}
 
 	/**

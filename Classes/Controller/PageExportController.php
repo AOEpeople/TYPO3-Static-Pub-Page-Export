@@ -63,10 +63,13 @@ class Tx_StaticpubPageexport_Controller_PageExportController extends t3lib_extob
 					$this->sendZipArchive( $fileRepository );
 				} else {
 					$errorMessage = $GLOBALS['LANG']->sL('LLL:EXT:staticpub_pageexport/locallang_db.xml:moduleFunction.tx_staticpub_pageexport_controller_pageExport.errorFileRepositoryHasNoFiles',1);
-					throw new LogicException($errorMessage);
+					$content .= '<br /><br />'.$errorMessage;
 				}
-			} catch (Exception $e) {
+			} catch (Tx_StaticpubPageexport_System_ZipArchiveException $e) {
 				$content .= '<br /><br />'.$e->getMessage();
+			} catch (Exception $e) {
+					$errorMessage = $GLOBALS['LANG']->sL('LLL:EXT:staticpub_pageexport/locallang_db.xml:moduleFunction.tx_staticpub_pageexport_controller_pageExport.errorIsUnknown',1);
+					$content .= '<br /><br />'.$errorMessage;
 			}
 		}
 	}
