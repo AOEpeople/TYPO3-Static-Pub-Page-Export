@@ -1,5 +1,4 @@
 <?php
-
 ########################################################################
 # Extension Manager/Repository config file for ext "staticpub_pageexort".
 #
@@ -18,7 +17,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'author_email' => 'dev@aoemedia.de',
 	'author_company' => 'AOE Media GmbH',
 	'shy' => '',
-	'dependencies' => 'staticpub',
+	'dependencies' => 'extbase,staticpub,crawler',
 	'conflicts' => '',
 	'priority' => '',
 	'module' => '',
@@ -29,10 +28,14 @@ $EM_CONF[$_EXTKEY] = array(
 	'modify_tables' => '',
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
-	'version' => '0.0.2',
+	'version' => '0.0.3',
 	'constraints' => array(
 		'depends' => array(
+			'typo3' => '4.3.0',
+			'php' => '5.2.0',
+			'extbase' => '1.2.1',
 			'staticpub' => '',
+			'crawler' => '',
 		),
 		'conflicts' => array(
 		),
