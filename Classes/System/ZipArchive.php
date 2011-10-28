@@ -82,6 +82,8 @@ class Tx_StaticpubPageexport_System_ZipArchive {
 				if($zipArchive->addFile($filename, $localName) === FALSE) {
 					$this->throwException( 'can not add file "'.$localName.'" to archive' );
 				}
+			} else {
+				$this->throwException( 'file "'.$filename.'" is not readable' );
 			}
 		}
 	}

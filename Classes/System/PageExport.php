@@ -123,11 +123,10 @@ class Tx_StaticpubPageexport_System_PageExport {
 	 * @return string
 	 */
 	protected function getPublishDirForResources(array $data) {
-		$publishDirForResources = '';
 		if(NULL !== $publishDirForResources = $this->getArrayElement($data, 'parameters|procInstrParams|tx_staticpub_publish.|publishDirForResources')) {
 			$publishDirForResources = $this->getPathSite() . $publishDirForResources;
-		} elseif(NULL !== $publishDir = $this->getArrayElement($data, 'log|tx_staticpub_publishdir')) {
-			$publishDirForResources = $this->getPathSite() . $publishDir;
+		} else {
+			$publishDirForResources = '';
 		}
 		return $publishDirForResources;
 	}

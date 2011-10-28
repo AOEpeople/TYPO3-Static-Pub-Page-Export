@@ -12,7 +12,7 @@ Overview of system related internals used or defined by the extension 'staticpub
 		tx_staticpub_publish {
 			includeResources=true
 			overruleBaseUrl=
-			publishDirForResources=typo3temp/staticpubresources_newsletter/
+			publishDirForResources=typo3temp/staticpubresources/
 		}
 		tx_crawler >
 		tx_crawler.crawlerCfg.paramSets {
@@ -28,8 +28,7 @@ Overview of system related internals used or defined by the extension 'staticpub
 		- this "Processing instruction parameters":
 			tx_staticpub_publish.includeResources=true
 			tx_staticpub_publish.overruleBaseUrl=
-			# the last config is optional
-			tx_staticpub_publish.publishDirForResources=typo3temp/staticpubresources_newsletter/
+			tx_staticpub_publish.publishDirForResources=typo3temp/staticpubresources/
 
 	3. Go into the 'Functions'-Backend-Module (in your TYPO3-Backend).
 	4. Select the 'Page-Export'-Function (you find the selection in the upper left corner in the content-frame)
