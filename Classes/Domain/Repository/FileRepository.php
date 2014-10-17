@@ -2,7 +2,7 @@
 /***************************************************************
  * Copyright notice
  *
- * (c) 2011 AOE media GmbH <dev@aoemedia.de>
+ * (c) 2014 AOE GmbH <dev@aoe.com>
  * All rights reserved
  *
  *
@@ -12,47 +12,57 @@
 /**
  * @package staticpub_pageexport
  */
-class Tx_StaticpubPageexport_Domain_Repository_FileRepository {
-	/**
-	 * @var array
-	 */
-	private $files = array();
-	/**
-	 * define the pageId, to which the files belong
-	 * 
-	 * @var integer
-	 */
-	private $pageId;
+class Tx_StaticpubPageexport_Domain_Repository_FileRepository
+{
+    /**
+     * @var array
+     */
+    private $files = array();
+    /**
+     * define the pageId, to which the files belong
+     *
+     * @var integer
+     */
+    private $pageId;
 
-	/**
-	 * @param Tx_StaticpubPageexport_Domain_Model_File $file
-	 */
-	public function addFile(Tx_StaticpubPageexport_Domain_Model_File $file) {
-		$this->files[] = $file;
-	}
-	/**
-	 * @return array
-	 */
-	public function getFiles() {
-		return $this->files;
-	}
-	/**
-	 * @return integer
-	 */
-	public function getPageId() {
-		return $this->pageId;
-	}
+    /**
+     * @param Tx_StaticpubPageexport_Domain_Model_File $file
+     */
+    public function addFile(Tx_StaticpubPageexport_Domain_Model_File $file)
+    {
+        $this->files[] = $file;
+    }
 
-	/**
-	 * @return boolean
-	 */
-	public function hasFiles() {
-		return (count($this->files) > 0);
-	}
-	/**
-	 * @param integer $pageId
-	 */
-	public function setPageId($pageId) {
-		$this->pageId = $pageId;
-	}
+    /**
+     * @return array
+     */
+    public function getFiles()
+    {
+        return $this->files;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getPageId()
+    {
+        return $this->pageId;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function hasFiles()
+    {
+        return (count($this->files) > 0);
+    }
+
+    /**
+     * @param integer $pageId
+     */
+    public function setPageId($pageId)
+    {
+        $this->pageId = $pageId;
+    }
+
 }

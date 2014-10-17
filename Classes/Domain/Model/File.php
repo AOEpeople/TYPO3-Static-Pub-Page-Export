@@ -2,7 +2,7 @@
 /***************************************************************
  * Copyright notice
  *
- * (c) 2011 AOE media GmbH <dev@aoemedia.de>
+ * (c) 2014 AOE GmbH <dev@aoe.com>
  * All rights reserved
  *
  *
@@ -11,54 +11,62 @@
 
 /**
  * VALUE-object
- * 
+ *
  * @package staticpub_pageexport
  */
-class Tx_StaticpubPageexport_Domain_Model_File {
-	/**
-	 * @var string
-	 */
-	private $name;
-	/**
-	 * this is the path on the server, where the file is
-	 * 
-	 * @var string
-	 */
-	private $originalPath;
-	/**
-	 * this is the path, which must be used in ZIP-file
-	 * 
-	 * @var string
-	 */
-	private $relativePath;
+class Tx_StaticpubPageexport_Domain_Model_File
+{
+    /**
+     * @var string
+     */
+    private $name;
+    /**
+     * this is the path on the server, where the file is
+     *
+     * @var string
+     */
+    private $originalPath;
+    /**
+     * this is the path, which must be used in ZIP-file
+     *
+     * @var string
+     */
+    private $relativePath;
 
-	/**
-	 * @param string $name
-	 * @param string $originalPath
-	 * @param string $relativePath
-	 */
-	public function __construct($name, $originalPath, $relativePath) {
-		$this->name = $name;
-		$this->originalPath = $originalPath;
-		$this->relativePath = $relativePath;
-	}
+    /**
+     * @param string $name
+     * @param string $originalPath
+     * @param string $relativePath
+     */
+    public function __construct($name, $originalPath, $relativePath)
+    {
+        $this->name = $name;
+        $this->originalPath = $originalPath;
+        $this->relativePath = $relativePath;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getName() {
-		return $this->name;
-	}
-	/**
-	 * @return string
-	 */
-	public function getOriginalPath() {
-		return $this->originalPath;
-	}
-	/**
-	 * @return string
-	 */
-	public function getRelativePath() {
-		return $this->relativePath;
-	}
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOriginalPath()
+    {
+        return $this->originalPath;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRelativePath()
+    {
+        return $this->relativePath;
+    }
+
 }

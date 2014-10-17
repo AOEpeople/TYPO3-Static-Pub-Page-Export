@@ -2,7 +2,7 @@
 /***************************************************************
  * Copyright notice
  *
- * (c) 2011 AOE media GmbH <dev@aoemedia.de>
+ * (c) 2014 AOE GmbH <dev@aoe.com>
  * All rights reserved
  *
  *
