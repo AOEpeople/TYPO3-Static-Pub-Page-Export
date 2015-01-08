@@ -8,7 +8,7 @@ if (TYPO3_MODE == 'BE') {
 	t3lib_extMgm::insertModuleFunction(
 		'web_func',
 		'Tx_StaticpubPageexport_Controller_PageExportController',
-		PATH_tx_staticpub_pageexport.'Classes/Controller/PageExportController.php',
+		NULL,
 		'LLL:EXT:staticpub_pageexport/locallang_db.xml:moduleFunction.tx_staticpub_pageexport_controller_pageExport'
 	);
 }
