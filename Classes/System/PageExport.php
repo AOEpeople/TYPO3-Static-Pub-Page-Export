@@ -88,6 +88,11 @@ class Tx_StaticpubPageexport_System_PageExport
     protected function getCrawler()
     {
         if (!isset($this->crawlerObj)) {
+            if (false === isset($_SERVER['argv'])) {
+                // Page Export is not called over CLI, but the CLI arguments passed to the script need to be defined.
+                $_SERVER['argv'] = array();
+            }
+
             $this->crawlerObj = t3lib_div::makeInstance('tx_crawler_lib');
             $this->crawlerObj->setID = t3lib_div::md5int(microtime());
         }
