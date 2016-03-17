@@ -32,7 +32,7 @@
         "phpmd/phpmd": "2.2.*"
     },
     "replace": {
-        "staticpub-pageexport": "*"
+        "staticpub_pageexport": "*"
     },
     "keywords": [
         "TYPO3",
