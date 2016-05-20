@@ -14,7 +14,7 @@
  * @package staticpub_pageexport
  * @subpackage System
  */
-class Tx_StaticpubPageexport_System_ZipArchiveTest extends tx_phpunit_testcase
+class Tx_StaticpubPageexport_System_ZipArchiveTest extends Tx_Phpunit_TestCase
 {
     /**
      * @var Tx_StaticpubPageexport_Domain_Repository_FileRepository

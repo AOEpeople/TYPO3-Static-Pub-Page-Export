@@ -14,7 +14,7 @@
  * @package staticpub_pageexport
  * @subpackage System
  */
-class Tx_StaticpubPageexport_System_PageExportTest extends tx_phpunit_testcase
+class Tx_StaticpubPageexport_System_PageExportTest extends Tx_Phpunit_TestCase
 {
     /**
      * @var tx_crawler_lib

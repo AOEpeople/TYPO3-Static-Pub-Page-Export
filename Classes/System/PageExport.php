@@ -9,6 +9,8 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /**
  * This class crawl a page and put the generated resources in file-repository
  *
@@ -33,8 +35,7 @@ class Tx_StaticpubPageexport_System_PageExport
      * crawl page and put HTML-file (and resources like images) of crawled page into file-repository
      *
      * @param $pageId
-     * @return Tx_StaticpubPageexport_System_PageExport
-     * @return getFileRepository
+     * @return Tx_StaticpubPageexport_Domain_Repository_FileRepository
      */
     public function exportPage($pageId)
     {
@@ -93,8 +94,8 @@ class Tx_StaticpubPageexport_System_PageExport
                 $_SERVER['argv'] = array();
             }
 
-            $this->crawlerObj = t3lib_div::makeInstance('tx_crawler_lib');
-            $this->crawlerObj->setID = t3lib_div::md5int(microtime());
+            $this->crawlerObj = GeneralUtility::makeInstance('tx_crawler_lib');
+            $this->crawlerObj->setID = GeneralUtility::md5int(microtime());
         }
         return $this->crawlerObj;
     }
@@ -105,7 +106,7 @@ class Tx_StaticpubPageexport_System_PageExport
     protected function getFileRepository()
     {
         if (!isset($this->fileRepository)) {
-            $this->fileRepository = t3lib_div::makeInstance('Tx_StaticpubPageexport_Domain_Repository_FileRepository');
+            $this->fileRepository = GeneralUtility::makeInstance('Tx_StaticpubPageexport_Domain_Repository_FileRepository');
         }
         return $this->fileRepository;
     }
@@ -177,7 +178,6 @@ class Tx_StaticpubPageexport_System_PageExport
 
     /**
      * @param integer $pageId
-     * @return Tx_StaticpubPageexport_System_PageExport
      */
     private function setPageId($pageId)
     {

@@ -9,11 +9,14 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Backend\Module\AbstractFunctionModule;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /**
  * Controller for Cache Management
  * @package staticpub_pageexport
  */
-class Tx_StaticpubPageexport_Controller_PageExportController extends t3lib_extobjbase
+class Tx_StaticpubPageexport_Controller_PageExportController extends AbstractFunctionModule
 {
     /**
      * MAIN function for static publishing information
@@ -39,7 +42,7 @@ class Tx_StaticpubPageexport_Controller_PageExportController extends t3lib_extob
      */
     protected function getPageExport()
     {
-        return t3lib_div::makeInstance('Tx_StaticpubPageexport_System_PageExport');
+        return GeneralUtility::makeInstance('Tx_StaticpubPageexport_System_PageExport');
     }
 
     /**
@@ -47,7 +50,7 @@ class Tx_StaticpubPageexport_Controller_PageExportController extends t3lib_extob
      */
     protected function getZipArchive()
     {
-        return t3lib_div::makeInstance('Tx_StaticpubPageexport_System_ZipArchive');
+        return GeneralUtility::makeInstance('Tx_StaticpubPageexport_System_ZipArchive');
     }
 
     /**
@@ -58,10 +61,10 @@ class Tx_StaticpubPageexport_Controller_PageExportController extends t3lib_extob
      */
     protected function handleActions(&$content)
     {
-        $action = t3lib_div::_GP('ACTION');
+        $action = GeneralUtility::_GP('ACTION');
         if (isset($action['startExport'])) {
             try {
-                $pageId = (integer)t3lib_div::_GP('id');
+                $pageId = (integer)GeneralUtility::_GP('id');
                 $fileRepository = $this->getPageExport()->exportPage($pageId);
 
                 if ($fileRepository->hasFiles() === TRUE) {

@@ -9,6 +9,8 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /**
  * This class creates a zip-archive on base of the file-repository
  *
@@ -22,7 +24,7 @@ class Tx_StaticpubPageexport_System_ZipArchive
      */
     public function getZipFileContent(Tx_StaticpubPageexport_Domain_Repository_FileRepository $fileRepository)
     {
-        $zipFile = PATH_site . 'typo3temp/' . t3lib_div::md5int(microtime()) . '.zip';
+        $zipFile = PATH_site . 'typo3temp/' . GeneralUtility::md5int(microtime()) . '.zip';
         $zipArchive = $this->createZipArchive();
 
         $this->createZipFile($zipArchive, $zipFile);
@@ -114,7 +116,7 @@ class Tx_StaticpubPageexport_System_ZipArchive
      */
     private function createZipFile(ZipArchive $zipArchive, $zipFile)
     {
-        if ($zipArchive->open($zipFile, ZIPARCHIVE::CREATE) === FALSE) {
+        if ($zipArchive->open($zipFile, ZipArchive::CREATE) === FALSE) {
             $this->throwException('can not create new archive "' . $zipFile . '"');
         }
     }

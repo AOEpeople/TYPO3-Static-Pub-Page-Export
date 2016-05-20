@@ -9,12 +9,14 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /**
  * test case for Tx_StaticpubPageexport_Domain_Repository_FileRepository
  * @package staticpub_pageexport
  * @subpackage Domain_Repository
  */
-class Tx_StaticpubPageexport_Domain_Repository_FileRepositoryTest extends tx_phpunit_testcase
+class Tx_StaticpubPageexport_Domain_Repository_FileRepositoryTest extends Tx_Phpunit_TestCase
 {
     /**
      * @var Tx_StaticpubPageexport_Domain_Repository_FileRepository
@@ -26,7 +28,7 @@ class Tx_StaticpubPageexport_Domain_Repository_FileRepositoryTest extends tx_php
      */
     protected function setUp()
     {
-        $this->fileRepository = t3lib_div::makeInstance('Tx_StaticpubPageexport_Domain_Repository_FileRepository');
+        $this->fileRepository = GeneralUtility::makeInstance('Tx_StaticpubPageexport_Domain_Repository_FileRepository');
     }
 
     /**

@@ -5,7 +5,7 @@ if (!defined('TYPO3_MODE')) {
 
 // register BE-module (show function to export newsletters)
 if (TYPO3_MODE == 'BE') {
-	t3lib_extMgm::insertModuleFunction(
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::insertModuleFunction(
 		'web_func',
 		'Tx_StaticpubPageexport_Controller_PageExportController',
 		NULL,
