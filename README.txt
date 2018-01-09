@@ -34,3 +34,6 @@ Overview of system related internals used or defined by the extension 'staticpub
 	4. Select the 'Page-Export'-Function (you find the selection in the upper left corner in the content-frame)
 	5. Select the page, which you want to export as a ZIP-file
 	6. Click on the button "Start Export"
+	
+	
+This extension is no longer actively maintained.
